@@ -611,13 +611,14 @@ a.btn-auth {
   background-repeat: no-repeat;
   display: block;
   height: 5rem;
-  width: 40%;
+  /*width: 40%;*/
+  width: 30%;
   background-size: cover;
   color: transparent;
 }
 
 a.btn-auth.btn-auth-google {
-  background-position: 0px 103%;
+  background-position: 0px 100%;
 }
 
 a.btn-auth.btn-auth-github {
