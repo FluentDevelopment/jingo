@@ -36,9 +36,10 @@ jingo_start()
 		site_args=$(eval echo \$${name}_${site}_args)
 		site_user=$(eval echo \$${name}_${site}_user)
 		site_config=$(eval echo \$${name}_${site}_config)
+		site_log=$(eval echo \${${name}_${site}_log:-/dev/null})
 
 		echo "Starting ${name}/$site."
-		doit="/bin/sh -c \"echo \\\$$ > ${pidfile} && exec /usr/bin/su ${site_user} -c 'exec ${command} ${site_args} -c ${site_config} >/dev/null 2>&1 '\" &"
+		doit="/bin/sh -c \"echo \\\$$ > ${pidfile} && exec /usr/bin/su ${site_user} -c 'exec ${command} ${site_args} -c ${site_config}' >${site_log} 2>&1 \" &"
 		eval "${doit}"
 	done
 	return $rv
